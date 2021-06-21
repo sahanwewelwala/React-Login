@@ -13,7 +13,6 @@ export function SignupForm(props) {
             <Input type="password" placeholder="Password" />
             <Input type="password" placeholder="Confirm Password" />
             <Marginer direction="vertical" margin={5} />
-            <MutedLink href="#">Forgot Your Password?</MutedLink>
             <Marginer direction="vertical" margin="1.2em"></Marginer>
             <SubmitButton type="submit">Sign Up</SubmitButton>
             <Marginer direction="vertical" margin="1.4em"></Marginer>
