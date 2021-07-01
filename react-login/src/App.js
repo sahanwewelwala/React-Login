@@ -3,6 +3,7 @@ import './App.css';
 import styled  from 'styled-components';
 import { AccountBox } from './componens/accountBox';
 
+
 const AppContainer = styled.div`
   margin-top:10%;
   width: 100%;
@@ -13,7 +14,7 @@ const AppContainer = styled.div`
   justify-content: center;
   
 `;
- 
+
 
 
 function App() {

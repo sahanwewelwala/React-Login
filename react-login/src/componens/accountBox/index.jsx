@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { LoginForm } from "./loginForm";
 import { motion } from "framer-motion";
 import { SignupForm } from "./sign-up";
+import { DashboardForm } from "./dashboard";
 import { AccountContext } from "./accountContext";
-
 
 const BoxContainer = styled.div`
 width: 300px;
@@ -39,8 +39,7 @@ const BackDrop = styled(motion.div)`
   transform : rotate(150deg);
   top: -290px;
   left: -180px;
-  background: rgb(34,193,195);
-  background: linear-gradient(0deg, rgba(34,193,195,1) 50%, rgba(253,187,45,1) 100%); 
+  background: linear-gradient(90deg, #9ebd13 0%, #008552 100%);
 `;
 const HeaderContainer = styled.div`
   margin-top:-80px;
@@ -77,73 +76,91 @@ const InnerContainer = styled.div`
  
 `;
 const backdropVariants = {
-  expanded:{
-    width:"233%",
+  expanded: {
+    width: "233%",
     height: "1250px",
-    borderRadius:"20%",
-    Transform:"rotate(60deg)",
+    borderRadius: "20%",
+    Transform: "rotate(60deg)",
 
   },
-  collapsed:{
-    width:"160%",
+  collapsed: {
+    width: "160%",
     height: "550px",
-    borderRadius:"50%",
-    Transform:"rotate(60deg)",
+    borderRadius: "50%",
+    Transform: "rotate(60deg)",
   },
 };
 
-const expandingTransition={
-  type:"spring",
-  duration:2.3,
+const expandingTransition = {
+  type: "spring",
+  duration: 2.3,
   stiffness: 30,
 }
 export function AccountBox(props) {
   const [isExpanded, setExpanded] = useState(false);
-  const[active,setActive] = useState("signin");
+  const [active, setActive] = useState("signin");
 
-  const playExpandingAnimation = () =>{
+  const playExpandingAnimation = () => {
     setExpanded(true);
 
     setTimeout(() => {
       setExpanded(false);
-    }, expandingTransition.duration *1000 - 1500);
-  } 
+    }, expandingTransition.duration * 1000 - 1500);
+  }
   const switchToSignup = () => {
     playExpandingAnimation();
     setTimeout(() => {
       setActive("signup");
-    },400 );
+    }, 400);
   }
-  const switchToSignin = () =>{
+  const switchToSignin = () => {
     playExpandingAnimation();
     setTimeout(() => {
       setActive("signin");
-    },400 );
+    }, 400);
   }
-  const contextValue = { switchToSignup,switchToSignin  };
+  const switchToDashboard = () => {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    if (username === ('admin') && password === ('root')) {
+     
+      playExpandingAnimation();
+      setTimeout(() => {
+        setActive("dashboard");
+      }, 400);
+    }
+
+  }
+  const contextValue = { switchToSignup, switchToSignin, switchToDashboard };
   return (
-  <AccountContext.Provider value={contextValue}>
-  <BoxContainer>
-    <TopConatiner>
-      <BackDrop initial={false} animate={isExpanded ? "expanded":"collapsed"} variants={backdropVariants} 
-      transition={expandingTransition}
-      />
-      {active === "signin" && <HeaderContainer>
-        <HeaderText>Welcome </HeaderText>
-        <HeaderText> Back</HeaderText>
-        <SmallText>Sign in to Continue !</SmallText>
-      </HeaderContainer>}
-      {active === "signup" && <HeaderContainer>
-        <HeaderText>Create </HeaderText>
-        <HeaderText> Account</HeaderText>
-        <SmallText>Sign up to Continue !</SmallText>
-      </HeaderContainer>}
-    </TopConatiner>
-    <InnerContainer>
-      {active === "signin" && <LoginForm/>}
-      {active === "signup" && <SignupForm/>}
-    </InnerContainer>
-  </BoxContainer>
-  </AccountContext.Provider>
+    <AccountContext.Provider value={contextValue}>
+      <BoxContainer>
+        <TopConatiner>
+          <BackDrop initial={false} animate={isExpanded ? "expanded" : "collapsed"} variants={backdropVariants}
+            transition={expandingTransition}
+          />
+          {active === "signin" && <HeaderContainer>
+            <HeaderText>Welcome </HeaderText>
+            <HeaderText> Back</HeaderText>
+            <SmallText>Sign in to Continue !</SmallText>
+          </HeaderContainer>}
+          {active === "signup" && <HeaderContainer>
+            <HeaderText>Create </HeaderText>
+            <HeaderText> Account</HeaderText>
+            <SmallText>Sign up to Continue !</SmallText>
+          </HeaderContainer>}
+          {active === "dashboard" && <HeaderContainer>
+            <HeaderText>Welcome to </HeaderText>
+            <HeaderText> Dashboard</HeaderText>
+            <SmallText>Login Succes!</SmallText>
+          </HeaderContainer>}
+        </TopConatiner>
+        <InnerContainer>
+          {active === "signin" && <LoginForm />}
+          {active === "signup" && <SignupForm />}
+          {active === "dashboard" && <DashboardForm />}
+        </InnerContainer>
+      </BoxContainer>
+    </AccountContext.Provider>
   );
 }

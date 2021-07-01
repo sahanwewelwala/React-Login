@@ -32,6 +32,13 @@ export const BoldLink = styled.a`
   text-decoration: none;
   margin: 0 4px;
 `;
+export const Maintext = styled.h1`
+  text-align:center;
+  font-size: 40px;
+  color:#16a085;
+  font-weight: 700;
+ 
+`;
 
 export const Input = styled.input`
   width: 258px;
@@ -66,13 +73,29 @@ export const SubmitButton = styled.button`
   border-radius: 100px 100px 100px 100px;
   cursor: pointer;
   transition: all, 240ms ease-in-out;
-  background: rgb(241, 196, 15);
-  background: linear-gradient(
-    58deg,
-    rgba(241, 196, 15, 1) 20%,
-    rgba(243, 172, 18, 1) 100%
-  );
+  background: rgb(24,141,72);
+background: radial-gradient(circle, rgba(24,141,72,1) 25%, rgba(241,196,15,1) 100%); 
   &:hover {
     filter: brightness(1.03);
   }
+ 
+
+`;
+export const FieldContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+ 
+`;
+export const FieldError = styled.span`
+  color: #c0392b;
+  font-size: 11px;
+  min-height: 18px;
+`;
+
+export const FormSucess = styled.span`
+color:green;
+font-size:12px;
+min-height:20px;
+
 `;
