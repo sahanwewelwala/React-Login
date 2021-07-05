@@ -120,15 +120,12 @@ export function AccountBox(props) {
     }, 400);
   }
   const switchToDashboard = () => {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    if (username === ('admin') && password === ('root')) {
-     
-      playExpandingAnimation();
-      setTimeout(() => {
-        setActive("dashboard");
-      }, 400);
-    }
+
+    playExpandingAnimation();
+    setTimeout(() => {
+      setActive("dashboard");
+    }, 400);
+
 
   }
   const contextValue = { switchToSignup, switchToSignin, switchToDashboard };

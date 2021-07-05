@@ -94,7 +94,13 @@ export const FieldError = styled.span`
 `;
 
 export const FormSucess = styled.span`
-color:green;
+color:#2ecc71;
+font-size:12px;
+min-height:20px;
+
+`;
+export const FormError = styled.span`
+color:#2ecc71;
 font-size:12px;
 min-height:20px;
 

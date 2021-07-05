@@ -16,6 +16,7 @@
     "express-validator": "*",
     "formik": "^2.2.9",
     "framer-motion": "^2.9.5",
+    "mock-user-auth": "^1.0.15",
     "mongodb": "*",
     "mongoose": "*",
     "multer": "*",
@@ -33,7 +34,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev": "nodeman src/index.js",
+    "devStart": "nodemon server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

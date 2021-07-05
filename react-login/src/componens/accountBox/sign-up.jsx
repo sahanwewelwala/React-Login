@@ -25,14 +25,15 @@ export function SignupForm(props) {
 
     const onSubmit = async (values) => {
 
-        const { confirmPassword, ...data } = values;
+        const { confirmPassword, ...data } = await values;
 
-        const response = await axios.post("https://run.mocky.io/v3/09940ccf-d807-4e82-85df-9568ba4074fe", data).catch((err) => {
+        const response = await axios.post("https://41528d35-1b8d-4355-91a7-e1d37d6a5f84.mock.pstmn.io/registred_users", data).catch((err) => {
             if (err && err.response)
                 console.log("Error:", err);
         });
-        if (response && response.data) {
-            setSuccess(response.data.message);
+        if (response) {
+
+            setSuccess(response.data.message)
         }
 
     };
